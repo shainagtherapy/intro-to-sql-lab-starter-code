@@ -12,7 +12,7 @@ SELECT name, code FROM countries WHERE region = 'Southern Europe' ORDER BY popul
 -- a translator to work with you.
 
 -- Write SQL query here
-SELECT language FROM countrylanguages WHERE countrycode = 'VAT';
+SELECT language FROM countrylanguages WHERE countrycode = 'VAT'; -- 'Italian'
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's 
 -- moved on to a different country, a country where people speak only the language she was 
@@ -20,6 +20,7 @@ SELECT language FROM countrylanguages WHERE countrycode = 'VAT';
 
 -- Write SQL query here
 SELECT language, countrycode FROM countrylanguages WHERE percentage = '100' AND language = 'Italian';
+SELECT name FROM countries WHERE code = 'SMR'; -- 'San Marino'
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to 
 -- catch her this time. There are only two cities she could be flying to in the country. 
@@ -27,7 +28,7 @@ SELECT language, countrycode FROM countrylanguages WHERE percentage = '100' AND 
 -- gut on this one; find out what other city in that country she might be flying to.
 
 -- Write SQL query here
-
+SELECT name FROM cities WHERE countrycode = 'SMR'; -- 'Serravalle'
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but 
 -- in totally different parts of the globe! She's headed to South America as we speak; go 
@@ -35,15 +36,17 @@ SELECT language, countrycode FROM countrylanguages WHERE percentage = '100' AND 
 -- Find out the city, and do another search for what country it's in. Hurry!
 
 -- Write SQL query here
-
+SELECT name FROM cities WHERE name LIKE 'Ser%'; -- Serra
+SELECT countrycode FROM cities WHERE name = 'Serra'; -- BRA
+SELECT name FROM countries WHERE code = 'BRA'; --Brazil
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, 
--- and is headed towards
--- the capital! Look up the country's capital, and get there pronto! Send us the name of
--- where you're headed and we'll follow right behind you!
+-- and is headed towards the capital! Look up the country's capital, and get there pronto!
+-- Send us the name of where you're headed and we'll follow right behind you!
 
 -- Write SQL query here
-
+SELECT capital FROM countries WHERE name = 'Brazil'; -- 211
+SELECT name FROM cities WHERE id = '211'; -- Brasilia
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international 
 -- airport, and she beat us to the boarding gates. We have one chance to catch her, we
@@ -62,3 +65,5 @@ SELECT language, countrycode FROM countrylanguages WHERE percentage = '100' AND 
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll
 -- be sure to meet her at the gates with bells on.
+
+SELECT name FROM cities WHERE population = '91084'; -- Santa Monica!
